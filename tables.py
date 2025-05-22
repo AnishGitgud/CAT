@@ -23,7 +23,6 @@ class Table:
             r1.append('Heads')
             for rH in self.row_head:
                 r1.append(str(rH))
-            r1.append('Total')
             self.table.append(r1)   # row head set
 
             rx = []
@@ -31,11 +30,8 @@ class Table:
                 rx.append(str(h))
                 for i in range(self.rows):
                     rx.append('Null')
-                rx.append('Null')
                 self.table.append(rx)
                 rx = []
-
-            self.table.append(['Total'] + ['Null'] * (self.rows + 1))
         except Exception as e:
             print(f"Error: {e}\nSet Heads first")
 

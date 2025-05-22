@@ -1,5 +1,5 @@
 ### Claude used because i don't give a shit about designing simple ui in a complex way
-### Yes even streamlit is complex for me - go suck your elitest CS dick somewhere else
+### Yes even streamlit is complex for me - go suck your elitist CS dick somewhere else
 
 import streamlit as st
 import pandas as pd
@@ -27,13 +27,35 @@ def initialize_session_state():
         st.session_state.last_timer_update = 0
 
 def show_hub():
-    """Display main hub with practice options"""
-    st.title("Welcome to downtown coolsville!")
+    """Display main hub with practice options for CAT sections"""
+    st.title("CAT Practice Hub!")
+    st.markdown("### Practice for the Common Admission Test (CAT)")
     st.markdown('----')
-    st.markdown('### Practice one of these please:')
-    col1, col2, col3 = st.columns([1,2,1])
-
+    
+    # Create four sections for CAT topics
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        # Reading Comprehension Section
+        st.markdown("### 📚 Reading Comprehension")
+        st.markdown("*Verbal Ability and Reading Comprehension*")
+        if st.button("RC Practice", type="secondary", use_container_width=True, disabled=True):
+            pass
+        st.markdown("*Nothing yet*")
+        
+        st.markdown("---")
+        
+        # Quantitative Aptitude Section  
+        st.markdown("### 🔢 Quantitative Aptitude")
+        st.markdown("*Mathematics and Problem Solving*")
+        if st.button("QA Practice", type="secondary", use_container_width=True, disabled=True):
+            pass
+        st.markdown("*Nothing yet*")
+    
     with col2:
+        # Data Analysis Section
+        st.markdown("### 📊 Data Analysis")
+        st.markdown("*Data Interpretation and Logical Reasoning*")
         if st.button("Addition Table", type="primary", use_container_width=True):
             # Initialize new table and timer
             st.session_state.table_obj = Table(ADDITION_TABLE_SIZE)
@@ -43,40 +65,23 @@ def show_hub():
             st.session_state.timer = Timer()
             st.session_state.current_page = 'addition_table'
             st.rerun()
-        
         st.markdown("*Make more types pissboy!*")
+        
+        st.markdown("---")
+        
+        # Logical Reasoning Section
+        st.markdown("### 🧠 Logical Reasoning")
+        st.markdown("*Logic and Critical Thinking*")
+        if st.button("LR Practice", type="secondary", use_container_width=True, disabled=True):
+            pass
+        st.markdown("*Nothing yet*")
     
     st.markdown("---")
-    st.markdown("**Instructions:**")
     st.markdown("- Click on a practice type to start")
-    st.markdown("- Timer starts automatically when the table loads")
-    st.markdown("- Complete all cells and click 'Check Answers' to see results")
-    st.markdown("- Fill all cells before checking answers")
-    st.markdown("- Use the 'New Table' button to reset the table")
-    st.markdown("- Click 'Hub' to return to the main menu")
-    st.markdown("---")
-    st.markdown("**USELESS NOTES:**")
-    st.markdown("This is a practice tool for addition tables. It is not a game.")
-    st.markdown("You can practice addition tables of size 1 to 10.")
-    st.markdown("The timer will start automatically when you load a table.")
-    st.markdown("You can check your answers after filling all cells.")
-    st.markdown("You can reset the table at any time.")
-    st.markdown("You can return to the main menu at any time.")
-    st.markdown("You can practice addition tables of size 1 to 10.")
-    st.markdown("You can practice addition tables of size 1 to 10.")
-    st.markdown("You can practice addition tables of size 1 to 10.")
-    st.markdown("You can practice addition tables of size 1 to 10.")
-    st.markdown("You can practice addition tables of size 1 to 10.")
-    st.markdown("You can practice addition tables of size 1 to 10.")
-    st.markdown("You can practice addition tables of size 1 to 10.")
-    st.markdown("You can practice addition tables of size 1 to 10.")
-    st.markdown("You can practice addition tables of size 1 to 10.")
-    st.markdown("You can practice addition tables of size 1 to 10.")
-    st.markdown("(This UI is so shit, you can't complete anything under a 2 minutes. Fuck you.)")
 
 def show_addition_table():
     """Display the addition table practice."""
-    st.title(" Addition Table Practice")
+    st.title("📊 Addition Table Practice - Data Analysis")
     
     # Navigation
     col1, col2, col3 = st.columns([1, 8, 1])
@@ -231,10 +236,15 @@ def show_addition_table():
 
     st.markdown("---")
     st.markdown("**Instructions:** Fill in each cell with the sum of its row and column headers.")
+    st.markdown("- Timer starts automatically when the table loads")
+    st.markdown("- Complete all cells and click 'Check Answers' to see results")
+    st.markdown("- Fill all cells before checking answers")
+    st.markdown("- Use the 'New Table' button to reset the table")
+    st.markdown("- Click 'Hub' to return to the main menu")
 
 
 def main():
-    initialize_session_state()  # Fixed function name
+    initialize_session_state()
     
     # Route to appropriate page
     if st.session_state.current_page == 'hub':
