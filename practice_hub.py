@@ -161,7 +161,7 @@ def show_addition_table():
                 for i in range(len(table_obj.solved_table)):
                     row_answers = []
                     for j in range(len(table_obj.solved_table[i])):
-                        user_value = edited_df.iloc[i+1, j+1]
+                        user_value = edited_df.iloc[i, j+1]
                         row_answers.append(str(user_value))
                     user_answers.append(row_answers)
                 
@@ -223,7 +223,7 @@ def show_addition_table():
                     else:
                         st.success("Perfect accuracy, but you could be faster if you STOPPED SUCKING ASS SO MUCH!")
                 elif accuracy >= 90:
-                    st.info("Eh, decennt enough.")
+                    st.info("Eh, decent enough.")
                 elif accuracy >= 75:
                     st.info("Failure! You fucked up big time!")
                 else:
