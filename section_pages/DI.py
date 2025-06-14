@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import time
 
-from tables import Table, Timer
+from utils.tables import Table, Timer
 from practice_hub_config import ADDITION_TABLE_SIZE
 
 

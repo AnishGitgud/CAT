@@ -1,6 +1,6 @@
 import streamlit as st
 
-from tables import Timer
+from utils.tables import Timer
 
 def initialize_session_state():
     if 'current_page' not in st.session_state:

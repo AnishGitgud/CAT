@@ -1,4 +1,4 @@
-import random
+from utils.randomMethods import random_generator as rg
 import time
 
 class Table:
@@ -12,7 +12,7 @@ class Table:
 
     def set_heads(self):
         """Set the row and column heads with random numbers."""
-        all_numbers = random.sample(range(10,100), self.rows + self.columns)
+        all_numbers = rg.randUniq2Arr(self.rows + self.columns)
         self.row_head = all_numbers[:self.rows]
         self.col_head = all_numbers[self.rows:]
 

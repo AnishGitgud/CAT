@@ -1,3 +1,5 @@
+from utils.randomMethods import random_generator as rg
+
 import streamlit as st
 
 def show_percentage():
@@ -18,14 +20,12 @@ def show_percentage():
     st.write('---')
 
     # generater random 2 and 3 digit numbers(both num and den)
-    import random
-
     if 'percentage_question' not in st.session_state:
         st.session_state.percentage_question = {
-            'num2' : random.randint(10,99),
-            'den2' : random.randint(10,99),
-            'num3' : random.randint(100,999),
-            'den3' : random.randint(100,999)
+            'num2' : rg.rand2Dig(),
+            'den2' : rg.rand2Dig(),
+            'num3' : rg.rand3Dig(),
+            'den3' : rg.rand3Dig()
         }
 
     # get current values and calculate
