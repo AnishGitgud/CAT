@@ -38,3 +38,6 @@ class random_generator:
     def randUniq3Arr(arrSize: int):
         arr = random.sample(range(100,1000), arrSize)
         return arr
+    
+    def randDec3():
+        return round(random.uniform(0.001, 0.999), 3)

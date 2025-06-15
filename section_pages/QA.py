@@ -2,6 +2,15 @@ from utils.randomMethods import random_generator as rg
 
 import streamlit as st
 
+def set_values():
+    st.session_state.percentage_question = {
+            'num2' : rg.rand2Dig(),
+            'den2' : rg.rand2Dig(),
+            'num3' : rg.rand3Dig(),
+            'den3' : rg.rand3Dig(),
+            'percent' : rg.randDec3()
+        }
+
 def show_percentage():
     """Display the percentage calculation practice."""
     st.title("Percentage Calculation practice - Quantitative Aptitude")
@@ -15,24 +24,21 @@ def show_percentage():
 
     with col3:
         if st.button("Refresh page", type='secondary'):
+            set_values()
             st.rerun()
 
     st.write('---')
 
     # generater random 2 and 3 digit numbers(both num and den)
     if 'percentage_question' not in st.session_state:
-        st.session_state.percentage_question = {
-            'num2' : rg.rand2Dig(),
-            'den2' : rg.rand2Dig(),
-            'num3' : rg.rand3Dig(),
-            'den3' : rg.rand3Dig()
-        }
+        set_values()
 
     # get current values and calculate
     num2 = st.session_state.percentage_question['num2']
     num3 = st.session_state.percentage_question['num3']
     den2 = st.session_state.percentage_question['den2']
     den3 = st.session_state.percentage_question['den3']
+    percento = st.session_state.percentage_question['percent']
 
     perc2 = round((num2 / den2) * 100, 2)
     perc3 = round((num3 / den3) * 100, 2)
@@ -40,7 +46,7 @@ def show_percentage():
     # # Display percent calculation question
     c1, c2, c3 = st.columns(3)
 
-    with c2:
+    with c1:
         st.write(f"Calculate these percentages dumbass :")
         
         with st.form("percentage_form"):
@@ -94,3 +100,27 @@ def show_percentage():
                     st.info("only one correct? KYS now!")
                 else:
                     st.warning("useless bum ass nigga")
+
+    with c3:
+
+        st.write('you know what to do:')
+
+        with st.form('multiply my a-'):
+            st.write(f'{percento* 100} percent of {num2}')
+            answer3_text = st.text_input(
+                "Enter your answer (up to 2 decimal places):",
+                key="answer3"
+            )
+            st.write(f'{percento* 100} percent of {num3}')
+            answer4_text = st.text_input(
+                "Enter your answer (up to 2 decimal places):",
+                key="answer4"
+            )
+
+            other_submitted = st.form_submit_button("Check Answers", type="primary")
+
+            if other_submitted:
+                answer3 = float(answer3_text) if answer3_text else 0
+                answer4 = float(answer4_text) if answer4_text else 0
+
+                st.info(f"{percento* 100} percent of {num2} = {percento * num2}\n{percento* 100} percent of {num3} = {percento * num3}")
